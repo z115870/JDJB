@@ -19,7 +19,7 @@ cron "0 0,23,12 * * *" script-path=https://raw.githubusercontent.com/KingRan/JDJ
 const $ = new Env('年货节火力值');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
-let rebateCodes = 'Slsj8oo'
+let rebateCodes = 'SkbfH1'
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [],
     cookie = '';
