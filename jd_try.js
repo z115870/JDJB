@@ -14,9 +14,14 @@ export JD_TRY_PLOG="true" #是否打印输出到日志
 export JD_TRY_PASSZC="true" #过滤种草官类试用
 export JD_TRY_MAXLENGTH="50" #商品数组的最大长度
 export JD_TRY_APPLYINTERVAL="5000" #商品试用之间和获取商品之间的间隔
-export JD_TRY_APPLYNUMFILTER="100000" #过滤大于设定值的已申请人数
+export JD_TRY_APPLYNUMFILTER="500000" #过滤大于设定值的已申请人数
 export JD_TRY_MINSUPPLYNUM="1" #最小提供数量
+<<<<<<< HEAD
+export JD_TRY_TABID="1@2@3@4@5"
+export JD_TRY_SENDNUM="2" #每隔多少账号发送一次通知，不需要可以不用设置
+=======
 export JD_TRY_SENDNUM="10" #每隔多少账号发送一次通知，不需要可以不用设置
+>>>>>>> 4a770a870b7cdf2e22eb7378ef2201e2d7d559df
 cron "4 1-22/8 * * *" jd_try.js, tag:京东试用
 
  */
@@ -48,10 +53,20 @@ $.innerKeyWords =
         "女用", "神油", "足力健", "老年", "老人",
         "宠物", "饲料", "丝袜", "黑丝", "磨脚",
         "脚皮", "除臭", "性感", "内裤", "跳蛋",
+<<<<<<< HEAD
+<<<<<<< HEAD
+        "安全套", "龟头", "阴道", "阴部", "手机卡"
+=======
+        "安全套", "龟头", "阴道", "阴部", "流量卡",
+        "上网卡", "学习", "新东方", "在线", "注册",
+        "消防工程师", "直播课", "训练课", "体验课"
+>>>>>>> 74a8cfa79591f573f52f9f7abb9110293431613a
+=======
         "安全套", "龟头", "阴道", "阴部", "手机卡",
         "流量卡", "和田玉", "钢化膜", "手机壳"
+>>>>>>> 3f6f735cbaf421553e2420541325ddf8f1920763
     ]
-//下面很重要，遇到问题请把下面注释看一遍再来问
+//下面很重要，遇到问题请把下面注释看一遍再来问!
 let args_xh = {
     /*
      * 商品原价，低于这个价格都不会试用，意思是
@@ -102,7 +117,7 @@ let args_xh = {
      * 过滤大于设定值的已申请人数，例如下面设置的1000，A商品已经有1001人申请了，则A商品不会进行申请，会被跳过
      * 可设置环境变量：JD_TRY_APPLYNUMFILTER
      * */
-    applyNumFilter: process.env.JD_TRY_APPLYNUMFILTER * 1 || 10000,
+    applyNumFilter: process.env.JD_TRY_APPLYNUMFILTER * 1 || 50000,
     /*
      * 商品试用之间和获取商品之间的间隔, 单位：毫秒(1秒=1000毫秒)
      * 可设置环境变量：JD_TRY_APPLYINTERVAL
@@ -151,7 +166,7 @@ let args_xh = {
      * 每多少个账号发送一次通知，默认为4
      * 可通过环境变量控制 JD_TRY_SENDNUM
      * */
-    sendNum: process.env.JD_TRY_SENDNUM * 1 || 4,
+    sendNum: process.env.JD_TRY_SENDNUM * 1 || 2,
 }
 //上面很重要，遇到问题请把上面注释看一遍再来问
 !(async() => {

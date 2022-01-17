@@ -1,0 +1,24 @@
+name: 1 pull-request
+on:
+  schedule:
+    - cron: '5 */3 * * *'
+  workflow_dispatch:
+  watch:
+    types: started
+  repository_dispatch:
+    types: sync-KingRan-JDJB
+jobs:
+pull-request:
+      needs: regression-tests
+      name: Github Pull Request
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: "main"
+          pr_title: "Pulling ${{ github.ref }} into main"
+          pr_body: "👑 *An automated PR test*"
+          pr_reviewer: "Kev"
+          github_token: ${{ secrets.GITHUB_TOKEN }}

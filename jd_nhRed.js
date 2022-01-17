@@ -42,7 +42,7 @@ if ($.isNode()) {
 }
 rebatePin = $.isNode() ? (process.env.jd_rebatePin ? process.env.jd_rebatePin : `${rebatePin}`) : ($.getdata('jd_rebatePin') ? $.getdata('jd_rebatePin') : `${rebatePin}`);
 let rebatePinArr = rebatePin && rebatePin.split(',') || []
-let rebateCode = ''
+let rebateCode = 'SCscAnP'
 message = ''
 newCookie = ''
 resMsg = ''
@@ -151,7 +151,7 @@ let nowTime = new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*
 
 async function run(type = 0){
   try{
-    let rebateCodes = ["SKib2Yf", "SMy132Y", "SLyGhBd"];
+    let rebateCodes = ["StsXemf", "SCscAnP"];
     rebateCodes = rebateCodes[Math.floor((Math.random() * rebateCodes.length))]
     rebateCodes = $.isNode() ? (process.env.jd_rebateCode ? process.env.jd_rebateCode : `${rebateCodes}`) : ($.getdata('jd_rebateCode') ? $.getdata('jd_rebateCode') : `${rebateCodes}`);
     rebateCode = rebateCodes

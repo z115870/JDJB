@@ -6,7 +6,7 @@
 const $ = new Env('双十一无门槛红包');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
-const flCode = $.isNode() ? (process.env.FLCODE ? process.env.FLCODE : '3CXBs51'):'3CXBs51';
+const flCode = $.isNode() ? (process.env.FLCODE ? process.env.FLCODE : 'yIZYCdd'):'yIZYCdd';
 let cookiesArr = [];
 if ($.isNode()) {
     Object.keys(jdCookieNode).forEach((item) => {
@@ -24,7 +24,7 @@ let cookie = '';
 $.code = flCode;
 $.shareCode = '';
 !(async () => {
-  console.log('默认执行脚本。点击链接 https://u.jd.com/3CXBs51 \n')
+  console.log('默认执行脚本。点击链接 https://u.jd.com/yIZYCdd \n')
   console.log('跳转到app 可查看助力情况。')
     if (!cookiesArr[0]) {
         $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});

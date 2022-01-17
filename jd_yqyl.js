@@ -31,7 +31,7 @@ if (process.env.yqm) {
 if (process.env.zdtx) {
     zdtx = process.env.zdtx;
 }
-let helpAuthorFlag = true;//是否助力作者SH  true 助力，false 不助力
+let helpAuthorFlag = false;//是否助力作者SH  true 助力，false 不助力
 let helpAuthorInfo = []
 
 if ($.isNode()) {
@@ -52,7 +52,7 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
     let authorCode = "";
     if(helpAuthorFlag){
         try{
-            helpAuthorInfo = await getAuthorShareCode('https://gitee.com/KingRan521/JD-Scripts/raw/master/shareCodes/yqyl.json');
+            helpAuthorInfo = await getAuthorShareCode('https://raw.githubusercontent.com/welldo/JDJB/main/yqyl.json');
         }catch (e) {}
         if(!helpAuthorInfo){
             helpAuthorInfo = [];
