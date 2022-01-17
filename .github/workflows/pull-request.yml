@@ -1,3 +1,13 @@
+name: 1 pull-request
+on:
+  schedule:
+    - cron: '5 */3 * * *'
+  workflow_dispatch:
+  watch:
+    types: started
+  repository_dispatch:
+    types: sync-KingRan-JDJB
+jobs:
 pull-request:
       needs: regression-tests
       name: Github Pull Request
