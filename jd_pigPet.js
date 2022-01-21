@@ -193,8 +193,8 @@ function pigPetUserBag() {
                   }
                   for (let item of data.resultData.resultData.goods) {
                     if (item.count >= 20) {
-                      let i = 50
-                      console.log(`\n每次运行最多喂食50次`)
+                      let i = parseInt(process.env.PIG_FEED_LIMIT || 50)
+                      console.log(`\n每次运行最多喂食${i}次(环境变量PIG_FEED_LIMIT)`)
                       do {
                         console.log(`\n15秒后开始喂食${item.goodsName}，当前数量为${item.count}g`)
                         await $.wait(15000);
@@ -872,18 +872,6 @@ function getAuthorShareCode(url) {
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
       }
     };
-    if ($.isNode() && process.env.TG_PROXY_HOST && process.env.TG_PROXY_PORT) {
-      const tunnel = require("tunnel");
-      const agent = {
-        https: tunnel.httpsOverHttp({
-          proxy: {
-            host: process.env.TG_PROXY_HOST,
-            port: process.env.TG_PROXY_PORT * 1
-          }
-        })
-      }
-      Object.assign(options, { agent })
-    }
     $.get(options, async (err, resp, data) => {
       try {
         resolve(JSON.parse(data))

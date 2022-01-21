@@ -1,8 +1,7 @@
 /**
- 特务Z
+ 特务Z，默认选择左边战队
  脚本没有自动开卡，会尝试领取开卡奖励
- cron 23 8,11,20 * * * https://raw.githubusercontent.com/star261/jd/main/scripts/jd_productZ4Brand.js
- 一天要跑2次
+1 2,14,20 * * * jd_superBrand.js
  */
 const $ = new Env('特务Z');
 const notify = $.isNode() ? require('./sendNotify') : '';
@@ -145,17 +144,17 @@ async function doTask(){
             if (signList.length === 0) {
                 console.log(`任务：${$.oneTask.assignmentName},信息异常`);
             }
-            if ($.oneTask.assignmentName.indexOf('首页下拉') !== -1 || $.oneTask.assignmentDesc.includes('首页下拉')) {
-                for (let j = 0; j < signList.length; j++) {
-                    if (signList[j].status === 1) {
-                        console.log(`任务：${$.oneTask.assignmentName},去执行,请稍稍`);
-                        let itemId = signList[j].itemId;
-                        $.runInfo = {'itemId':itemId};
-                        await takeRequest('superBrandDoTask');
-                        await $.wait(3000);
-                    }
+            //if ($.oneTask.assignmentName.indexOf('首页下拉') !== -1) {
+            for (let j = 0; j < signList.length; j++) {
+                if (signList[j].status === 1) {
+                    console.log(`任务：${$.oneTask.assignmentName},去执行,请稍稍`);
+                    let itemId = signList[j].itemId;
+                    $.runInfo = {'itemId':itemId};
+                    await takeRequest('superBrandDoTask');
+                    await $.wait(3000);
                 }
             }
+            //}
         }
     }
 }
@@ -255,10 +254,7 @@ function dealReturn(type, data) {
             }else if (data.code === '0' && data.data.bizCode === '108'){
                 $.canHelp = false;
                 console.log(`助力次数已用完`);
-            } else if (data.code === '0' && data.data.bizCode === '109') {
-                $.canHelp = false;
-                console.log(`不能自己给自己助力`);
-            } else if (data.code === '0' && data.data.bizCode === '103'){
+            }else if (data.code === '0' && data.data.bizCode === '103'){
                 console.log(`助力已满`);
                 $.codeInfo.time = 3;
             }else if (data.code === '0' && data.data.bizCode === '2001'){
